@@ -71,9 +71,9 @@ In CSS, elements generally take two forms: replaced and nonreplaced.
 #### Alternate stylesheets
 
 ```css
-<link rel="stylesheet" type="text/css" href="sheet1.cc" title="Default"
-<link rel="alternate stylesheet" type="text/css" href="bigtext.css" title="Big Text"
-<link rel="alternate stylesheet" type="text/css" href="zany.css" title="Crazy colors!"
+<link rel="stylesheet" type="text/css" href="sheet1.cc" title="Default">
+<link rel="alternate stylesheet" type="text/css" href="bigtext.css" title="Big Text">
+<link rel="alternate stylesheet" type="text/css" href="zany.css" title="Crazy colors!">
 ```
 
 They are used only if selected by the user.
