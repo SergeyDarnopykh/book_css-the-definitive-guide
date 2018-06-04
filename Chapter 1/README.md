@@ -1,10 +1,8 @@
 # Chapter 1 CSS and Documents
 
-
-
 ## Elements
 
-#### Replaced and nonreplaced elements
+### Replaced and nonreplaced elements
 
 In CSS, elements generally take two forms: replaced and nonreplaced.
 
@@ -28,7 +26,7 @@ In CSS, elements generally take two forms: replaced and nonreplaced.
 
 
 
-#### Element Display Roles
+### Element Display Roles
 
 **Block-level elements** generate an element box that (by default) fills its parent element's content area and cannot have other elements at its sides.
 
@@ -56,7 +54,7 @@ In CSS, elements generally take two forms: replaced and nonreplaced.
 
 ## Bringing CSS and HTML Together
 
-#### Loading external css
+### Loading external css
 
 ```css
 <link rel=stylesheet" type="text/css" href="my-sheet.css" media="screen, projection">
@@ -68,7 +66,7 @@ In CSS, elements generally take two forms: replaced and nonreplaced.
 
 
 
-#### Alternate stylesheets
+### Alternate stylesheets
 
 ```css
 <link rel="stylesheet" type="text/css" href="sheet1.cc" title="Default">
@@ -90,7 +88,7 @@ If the stylesheet doesn't have a title, then it is a *persistent stylesheet* and
 
 
 
-#### The style Element
+### The style Element
 
 ```css
 <style type="text/css">...</style>
@@ -106,7 +104,7 @@ The styles between the opening and closing style tags are referred to as the *do
 
 
 
-#### The @import Directive
+### The @import Directive
 
 ```css
 @import url(sheet2.css);
@@ -130,7 +128,7 @@ As with link, you can restrict imported stylesheets to one or more media:
 
 
 
-#### HTTP Linking
+### HTTP Linking
 
 You can think associate CSS with a document via HTTP headers.
 
@@ -152,7 +150,7 @@ HTTP linking is supported by Firefox and Opera.
 
 
 
-#### Inline Styles
+### Inline Styles
 
 ```css
 <p style="color: gray;">Lorem ipsum</p>
@@ -164,21 +162,21 @@ You can place only a declaration block inside inline style attribute. You can't 
 
 
 
-### Stylesheet Contents
+## Stylesheet Contents
 
-#### Markup
+### Markup
 
 There is no markup in stylesheets. The only exception is HTML comment markup.
 
 
 
-#### Structure of the css rule
+### Structure of the css rule
 
 ![Structure of the rule](/Users/user/Projects/book_css-the-definitive-guide/Chapter 1/Structure of the rule.png)
 
 
 
-#### Vendor prefixing
+### Vendor prefixing
 
 These are a way for browser vendors to mark properties, values, or other bits of CSS as being experimental or proprietary (or both).
 
@@ -196,13 +194,13 @@ Examples:
 
 
 
-#### Whitespace Handling
+### Whitespace Handling
 
 In general, CSS treats whitespace just like HTML does: any sequence of whitespace characters is collapsed to a single space for parsing purposes.
 
 
 
-#### CSS Comments
+### CSS Comments
 
 ```css
 /* This is a CSS comment */
@@ -223,7 +221,7 @@ There's no "rest of the line" comment pattern such as `//` or `#`.
 
 ## Media queries
 
-#### Usage
+### Usage
 
 They can be used in the following places:
 
@@ -235,7 +233,7 @@ Queries can range from simple media types to complicated combinations of media t
 
 
 
-#### Simple Media Queries
+### Simple Media Queries
 
 ```css
 @media projection {
@@ -249,7 +247,7 @@ Queries can range from simple media types to complicated combinations of media t
 
 
 
-#### Media Types
+### Media Types
 
 `all` - Used in all presentational media.
 
@@ -274,7 +272,7 @@ Multiple media types can be specified using a comma-separated list:
 
 
 
-#### Media Descriptors
+### Media Descriptors
 
 ```css
 <link href="print-color.css" type="text/css" media="print and (color), screen and (color-depth: 8)" rel="stylesheet">
@@ -286,7 +284,7 @@ Anywhere a media type can be used, a media query can be used.
 
 
 
-##### Combining descriptors:
+#### Combining descriptors:
 
 `and` - Links together two or more media features in such a way that all of them must be true for the query to be true.
 
