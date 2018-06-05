@@ -317,6 +317,80 @@ Each media descriptor is composed of a media type and one or more listed media f
 
 
 
+### Media Feature Descriptors and Value Types
+
+All possible descriptors (current as of late 2017):
+
+- width
+
+- min-width
+
+- max-width
+
+- device-width
+
+- min-device-width
+
+- max-device-width
+
+- height
+
+- min-height
+
+- max-height
+
+- device-height
+
+- min-device-height
+
+- max-device-height
+
+- aspect-ratio
+
+- min-aspect-ratio
+
+- max-aspect-ratio
+
+- device-aspect-ratio
+
+- min-device-aspect-ratio
+
+- max-device-aspect-ratio
+
+- color
+
+- min-color
+
+- max-color
+
+- color-index
+
+- min-color-index
+
+- max-color-index
+
+- monochrome
+
+- min-monochrome
+
+- max-monochrome
+
+- resolution (new)
+
+- min-resolution
+
+- max-resolution
+
+- orientation
+
+- scan
+
+- grid
+
+- ratio (new)
+
+  
+
 ## Feature Queries
 
 **Feature query** - the ability to apply blocks of CSS when certain CSS property-value combinations are supported by the user agent.
