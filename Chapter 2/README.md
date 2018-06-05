@@ -442,8 +442,6 @@ h1 > strong { color: red }
 
 This rule will make red the *strong* element only with a parent of *h1* element.
 
-`Note:` the whitespace before and after `>` is optional.
-
 
 
 ### Selecting Adjacent Sibling Elements
@@ -454,17 +452,16 @@ h1 + p { margin-top: 0; }
 
 The selector is reas as, "Selects any `p` element that *immediately follows* an `h1` element that *shares a parent* with the `p` element".
 
-`Note:` the whitespace before and after `+` is optional.
-
-````sequence
-div->ol: ;
-div->ul: ;
-ol->li: ;
-ol->li: ;
-ol->li: ;
-ul->li: ;
-ul->li: ;
-ul->li: ;
+````mermaid
+graph TD
+div-->ol;
+div-->ul;
+ol-->li1;
+ol-->li2;
+ol-->li3;
+ul-->li4;
+ul-->li5;
+ul-->li6;
 ````
 
 ```css
@@ -490,3 +487,87 @@ div#content h1 + div ol
 ```
 
 The selector is read as: "Selects any `ol` element that *is descended* from a `div` when the `div` is the adjacent sibling of an `h1` which *is itself descended* from a `div` whose `id` attribute *has a value of content*".
+
+
+
+### Selecting Following Siblings
+
+```css
+h2 ~ol { font-style: italic; }
+```
+
+This rule italicizes any `ol` that follows an `h2` and also *shares a parent* with the `h2`. 
+
+The two elements do not have to be adjacent siblings, although they can be adjacent and still match this rule.
+
+`Note:` the whitespace before and after `+`, `>`, `~` are optional.
+
+
+
+## Pseudo-Class Selectors
+
+These selectors let you assign styles to what are, in effect, phantom classes that are inferred by the state of certain elements, or markup patterns within the document, or even by the state of the document itself.
+
+
+
+### Combining Pseudo-Classes
+
+CSS makes it possible to chain pseudo-classes together. For example, you can make unvisited links red when they're hovered and visited links maroon when *they're* hovered:
+
+```css
+a:link:hover { color: red; }
+a:visited:hover { color: maroon; }
+```
+
+The order order doesn't matter, you could also write `a:link:hover` as `a:hover:link`. 
+
+It's also possible to assign separate hover styles to unvisited and visited links that are in another language:
+
+```css
+a:link:hover:lang(de) { color: gray; }
+a:visited:hover:lang(de) { color: silver; }
+```
+
+`Note:` you cannot combine mutually exclusive pseudo-classes (for example, `a:link:visited` doesn't make any sence and will never match anything).
+
+
+
+### Structural Pseudo-Classes
+
+The majority of pseudo-classes refer to the markup structure of the document. Most of them depend on patterns within the markup, such as choosing every third paragraph, but others allow you to address specific types of elements.
+
+All pseudo-classes, without exception, are a word preceded by `:`, and they can appear anywhere in a selector.
+
+`Note:` pseudo-classes always refer to the element to which they're attached, and no other. For a few of the structural pseudo-classes it's a common error to think they are descriptors that refer to descendant elements.
+
+In other words, the effect of pseudo-classes is to apply a sort of a "phantom class" to the element to which they're attached.
+
+```css
+#ericmeyer:first-child
+#ericmeyer > :first-child
+```
+
+The first selector selects Eric Meyer himself and only if he's the first child of his parents.
+
+The second selector selectrs the first child of Eric Meyer.
+
+
+
+#### Selecting the root element
+
+```css
+:root { border: 10px dotted gray; }
+```
+
+In HTML it's *always* the `html` element. In XML however, it's not. Because in XML the root element may differ in every language (or even in different documents in one language).
+
+`Note:` there's a difference between writing `:root` and `html` .
+
+
+
+#### Selecting empty elements
+
+
+
+
+
