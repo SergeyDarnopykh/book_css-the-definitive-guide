@@ -493,7 +493,7 @@ The selector is read as: "Selects any `ol` element that *is descended* from a `d
 ### Selecting Following Siblings
 
 ```css
-h2 ~ol { font-style: italic; }
+h2 ~ ol { font-style: italic; }
 ```
 
 This rule italicizes any `ol` that follows an `h2` and also *shares a parent* with the `h2`. 
@@ -567,7 +567,128 @@ In HTML it's *always* the `html` element. In XML however, it's not. Because in X
 
 #### Selecting empty elements
 
+With pseudo-classs `:empty`, you can select any element that has no children of any kind, *including* text nodes, which covers both text and whitespace. It can be useful in suppressing elements that a CMS has generated without filling in any actual content.
+
+`Note:` an element should be empty from a parsing perspective, in order to be matched (no whitespace, visible content or descendant elements).
+
+Here, only first and last elements will be matched:
+
+```html
+
+```
+
+```css
+p:empty { display: none; }
+```
 
 
 
+`:empty` matches HTML's empty elements, like `img`, `input` and even `textarea` without default text.
+
+`:empty` is unique in that it's the only CSS selector that takes text nodes into consideration when determining matches.
+
+
+
+#### Selecting unique children
+
+```css
+img:only-child { border: 1px solid black; }
+```
+
+This rule selects elements when they are the *only child* element of another element.
+
+Things to remember about this `:only-child`:
+
+1. You always apply it to the element you want to be an only child, not to the parent element.
+2. When you use `:only-child` in a descendant selector, you aren't restricting the elements to a parent-child relationship.
+
+```css
+a[href] img:only-child
+```
+
+It will match  any image that is only child and *is descended* from an `a` element, not necessarily *is a child* of an `a` element. To restrict the rule to parent-child relationship, you should write:
+
+```css
+a[href] > img:only-child
+```
+
+
+
+If you want to match images that are the only images inside hyperlinks, you should use `:only-of-type`:
+
+```css
+a[href] > img:only-of-type
+```
+
+The differenct is that `:only-of-type` will match any element that is the only of its type among all its siblings, whereas `:only-child` will only match if an element has no siblings at all.
+
+This can be very useful in cases such as selecting images within paragraphs without having to worry about the presence of hyperlinks or other inline elements:
+
+```css
+p > img:only-of-type { float: right; margin: 20px; }
+```
+
+You could also use this pseudo-class to apply extra styles to an h2 when it's the only one in a section of a document:
+
+```css
+section > h2 { 
+    margin: 1rem 0 0.33rem;
+    font-size: 1.8rem;
+    border-bottom: 1px solid gray;
+}
+
+section > h2:only-of-type { font-size: 2.4rem; }
+```
+
+`Note:` `:only-of-type` refers to elements and nothing else (it *doesn't* work on classes, *type* means the *element type*).
+
+
+
+#### Selecting first and last children
+
+The pseudo-class `:first-child` is used to select elements that are the first children of other elements:
+
+```css
+li:first-child { font-weight: bold; }
+```
+
+The mirror image of `:first-child` is `:last-child`. It selects elements that are the last children of other elements:
+
+```css
+li:last-child { font-style: italic; }
+p:last-child { font-size: 15px; }
+```
+
+`Note:` this two rules will select the same elements:
+
+```css
+p:only-child { color: red; }
+p:first-child:last-child { color: red; }
+```
+
+
+
+#### Selecting first and last of a type
+
+You can select the first or last of a type of element within another element:
+
+```css
+table:first-of-type { color: blue; }
+p:last-of-type { color: red; }
+```
+
+These rules select first `table` and last `p` inside of a given element.
+
+`Note:` this does not apply to the entire document, it will not select the first `element of type` in the document and skipp all others. 
+
+`Note:` this two rules will select the same elements:
+
+```css
+table:only-of-type { color: red; }
+table:first-of-type:last-of-type { color: red; }
+```
+
+
+
+#### Selecting every nth child
 
